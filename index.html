@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hương Thu & Minh Nhật | Wedding Invitation</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: #65503d;
+      background: #f7f1e8;
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+    }
+    section {
+      min-height: 100vh;
+      padding: 65px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover {
+      background: radial-gradient(ellipse at center,
+        #fffaf2 0%, #ead8c2 75%, #c8a986 100%);
+    }
+    .eyebrow { letter-spacing: 4px; font-size: 13px; }
+    h1 { font-size: clamp(34px, 8vw, 60px); font-weight: normal; }
+    h2 { font-size: 34px; font-weight: normal; }
+    .guest {
+      font-size: clamp(27px, 7vw, 43px);
+      font-style: italic;
+      margin: 20px 0 35px;
+    }
+    .envelope {
+      width: min(310px, 80vw);
+      height: 190px;
+      background: #f4e8d6;
+      border: 2px solid #d4bfa4;
+      box-shadow: 0 15px 35px #765b4030;
+      position: relative;
+      cursor: pointer;
+      margin: 20px auto;
+      transition: transform .4s;
+    }
+    .envelope:hover { transform: translateY(-5px); }
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #e9d9c4;
+      clip-path: polygon(0 0, 50% 58%, 100% 0);
+    }
+    .seal {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #a58147;
+      color: #fff5e2;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      border: 4px double #e8cf91;
+    }
+    .date { font-size: 23px; letter-spacing: 5px; }
+    .button {
+      display: inline-block;
+      padding: 13px 30px;
+      margin-top: 20px;
+      background: #806b4d;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .details { background: #fffaf4; }
+    .divider {
+      width: 90px;
+      border-top: 1px solid #b69a74;
+      margin: 25px auto;
+    }
+    .small { line-height: 1.9; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <p class="eyebrow">TRÂN TRỌNG KÍNH MỜI</p>
+    <div class="guest" id="guestName">Quý Khách</div>
+
+    <div class="envelope" onclick="openInvitation()"
+         role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter')openInvitation()">
+      <div class="seal">H</div>
+    </div>
+
+    <p class="eyebrow">CHẠM VÀO PHONG BÌ ĐỂ MỞ THIỆP</p>
+    <h1>Hương Thu & Minh Nhật</h1>
+    <p class="date">09.01.2027</p>
+  </section>
+
+  <section class="details" id="invitation">
+    <p class="eyebrow">WE'RE GETTING MARRIED</p>
+    <h2>Hương Thu & Minh Nhật</h2>
+    <div class="divider"></div>
+
+    <p>Trân trọng kính mời</p>
+    <div class="guest" id="invitedGuest">Quý Khách</div>
+    <p>Đến chung vui trong ngày hạnh phúc của chúng mình</p>
+
+    <h2>09 | 01 | 2027</h2>
+    <p class="small">
+      THÁNH LỄ HÔN PHỐI – 15:00<br>
+      Thánh đường Giáo xứ Thiên An
+    </p>
+    <p class="small">
+      LỄ VU QUY<br>
+      Đón khách 17:00 – Khai tiệc 18:00<br>
+      Thiên Ân Palace
+    </p>
+    <p>Rất hân hạnh được đón tiếp!</p>
+    <a class="button" href="#gallery">XEM TIẾP ♡</a>
+  </section>
+
+  <section id="gallery">
+    <p class="eyebrow">OUR WEDDING GALLERY</p>
+    <h2>Our Love Story ♡</h2>
+    <p>Album ảnh cưới sẽ được cập nhật tại đây.</p>
+    <p>Hương Thu & Minh Nhật</p>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("guest") || "Quý Khách";
+
+    document.getElementById("guestName").textContent = guest;
+    document.getElementById("invitedGuest").textContent = guest;
+
+    function openInvitation() {
+      document.getElementById("invitation")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
